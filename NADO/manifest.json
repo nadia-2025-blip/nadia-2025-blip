@@ -1,0 +1,27 @@
+{
+  "name": "Coach Nado - دورة الحلويات التقليدية والعصرية",
+  "short_name": "Coach Nado",
+  "description": "انضمي لأكثر من 500 متدربة نجحن في تعلم فنون الحلويات مع الأستاذة نادية المعتمدة",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fefefe",
+  "theme_color": "#D2691E",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "images/logo.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/logo.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "food", "lifestyle"],
+  "lang": "ar",
+  "dir": "rtl"
+}
