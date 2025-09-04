@@ -1,0 +1,59 @@
+/* Performance Optimizations */
+
+/* Critical CSS - Above the fold */
+.header, .hero, .hero-content {
+    contain: layout style paint;
+}
+
+/* Reduce animations on mobile */
+@media (max-width: 768px) {
+    *, *::before, *::after {
+        animation-duration: 0.3s !important;
+        transition-duration: 0.2s !important;
+    }
+    
+    .hero-particles,
+    .floating-elements,
+    .btn-particles,
+    .wave {
+        display: none !important;
+    }
+    
+    .stat-card-advanced::before,
+    .feature-card::before {
+        display: none;
+    }
+}
+
+/* GPU Acceleration */
+.slide, .nav-links, .modal-content {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Optimize images */
+img {
+    content-visibility: auto;
+    contain-intrinsic-size: 300px 200px;
+}
+
+/* Lazy load non-critical sections */
+.testimonials, .footer, .certificates {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+}
+
+/* Reduce repaints */
+.slider-btn:hover, .nav-link:hover {
+    transform: translateZ(0) scale(1.05);
+}
+
+/* Optimize fonts */
+.brand-name, .main-title {
+    font-display: swap;
+}
+
+/* Critical resource hints */
+.hero-background {
+    contain: strict;
+}
