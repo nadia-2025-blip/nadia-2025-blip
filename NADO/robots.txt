@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /config.php
+Disallow: /*.sql$
+
+Sitemap: https://coach-nado.com/sitemap.xml

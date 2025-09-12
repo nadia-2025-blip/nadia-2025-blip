@@ -1,0 +1,212 @@
+/* Viewport and Mobile Browser Fixes */
+
+/* CSS Custom Properties for Dynamic Viewport */
+:root {
+    --vh: 1vh;
+    --vw: 1vw;
+}
+
+/* Mobile Safari Viewport Fix */
+@supports (-webkit-appearance: none) {
+    .hero {
+        min-height: calc(var(--vh, 1vh) * 100);
+    }
+}
+
+/* iOS Safari Address Bar Fix */
+@media screen and (max-width: 768px) {
+    .hero {
+        min-height: -webkit-fill-available;
+        min-height: stretch;
+    }
+}
+
+/* Android Chrome Viewport Fix */
+@media screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+    .hero {
+        min-height: calc(100vh - env(keyboard-inset-height, 0px));
+    }
+}
+
+/* Prevent Horizontal Scroll */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+}
+
+/* Touch Action Optimization */
+.slider-btn,
+.nav-link,
+.btn-primary-hero,
+.btn-secondary-hero,
+.submit-btn-advanced {
+    touch-action: manipulation;
+}
+
+/* Prevent Text Selection on UI Elements */
+.mobile-menu-toggle,
+.slider-btn,
+.dot {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Improve Tap Targets */
+@media (max-width: 768px) {
+    .nav-link,
+    .slider-btn,
+    .dot,
+    .mobile-menu-toggle {
+        min-width: 44px;
+        min-height: 44px;
+    }
+}
+
+/* Prevent Zoom on Input Focus (iOS) */
+@media (max-width: 768px) {
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    select,
+    textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* Smooth Scrolling Performance */
+html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* GPU Acceleration for Animations */
+.slide,
+.hero-particles,
+.floating-elements,
+.btn-particles {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Reduce Motion for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .btn-primary-hero,
+    .btn-secondary-hero,
+    .submit-btn-advanced {
+        border: 2px solid;
+    }
+}
+
+/* Dark Mode Adjustments */
+@media (prefers-color-scheme: dark) {
+    .registration-form {
+        background: rgba(26, 26, 46, 0.95);
+        color: white;
+    }
+    
+    .form-group input,
+    .form-group select {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Landscape Orientation Fixes */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+        padding: 80px 0 30px;
+    }
+    
+    .hero-stats {
+        flex-direction: row;
+        gap: 15px;
+    }
+    
+    .hero-buttons {
+        flex-direction: row;
+        gap: 15px;
+    }
+}
+
+/* Notch and Safe Area Support */
+@supports (padding: max(0px)) {
+    .header {
+        padding-left: max(15px, env(safe-area-inset-left));
+        padding-right: max(15px, env(safe-area-inset-right));
+        padding-top: env(safe-area-inset-top);
+    }
+    
+    .hero {
+        padding-top: calc(120px + env(safe-area-inset-top));
+    }
+    
+    .footer {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+/* Keyboard Avoidance */
+@supports (height: 100dvh) {
+    .hero {
+        min-height: 100dvh;
+    }
+}
+
+/* Focus Visible for Accessibility */
+.nav-link:focus-visible,
+.btn-primary-hero:focus-visible,
+.btn-secondary-hero:focus-visible,
+.submit-btn-advanced:focus-visible {
+    outline: 2px solid #FFD700;
+    outline-offset: 2px;
+}
+
+/* Loading State Optimization */
+.slide img {
+    loading: lazy;
+    decoding: async;
+}
+
+/* Print Styles */
+@media print {
+    .header,
+    .footer,
+    .hero-buttons,
+    .registration,
+    .mobile-menu-toggle,
+    .slider-btn {
+        display: none !important;
+    }
+    
+    .hero {
+        background: white !important;
+        color: black !important;
+        padding: 20px 0;
+    }
+    
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    .main-title,
+    .title-highlight {
+        color: black !important;
+    }
+}
